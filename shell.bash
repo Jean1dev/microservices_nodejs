@@ -1,6 +1,6 @@
 #!/bin/bash
 #feito esse script pra automatizar o deploy na cloud
-APP_NAME="neuraapi"
+APP_NAME="api"
 GIT_WORK_TREE="/repo/api.com"
 GIT_DIR="/repo/api.git"
 NODE_VERSION="v8.6.0"

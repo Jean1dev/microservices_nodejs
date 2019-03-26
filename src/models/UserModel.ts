@@ -11,7 +11,6 @@ export interface UserAttributes {
     contact_1?: string
     contact_2?: string
     description?: string
-    flcleaner?: boolean
     rating?: number
     photo?: string
     price?: number
@@ -65,11 +64,6 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
         contact_2:{
             type: DataTypes.STRING(128),
             allowNull: true
-        },
-        flcleaner: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
         },
         rating: {
             type: DataTypes.DECIMAL,

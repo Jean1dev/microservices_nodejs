@@ -15,10 +15,8 @@ const userTypes = `
         description: String
         createdAt: String!
         updatedAt: String!
-        posts(first: Int, offset: Int): [ Post! ]!
         services(first: Int, offset: Int): [ Service! ]!
         payments(first: Int, offset: Int): [ Payment! ]!
-        complaints(first: Int, offset: Int): [ Complaint! ]!
     }
 
     input UserCreateInput {
