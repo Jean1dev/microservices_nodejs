@@ -51,7 +51,7 @@ export const userResolvers = {
         users: (parent, { first = 10, offset = 0 }, context: ResolverContext, info: GraphQLResolveInfo) => {
             return context.db.User
                 .findAll({
-                    where: {},
+                    //where: {},
                     limit: first,
                     offset: offset,
                     attributes: context.requestedFields.getFields(info, { keep: ['id'], exclude: ['services', 'payments'] })

@@ -3,16 +3,13 @@ import { chai, db, handleError, app, expect } from './../../test-utils';
 describe('Token', () => {
 
     beforeEach(() => {
-        return db.Comment.destroy({where: {}})
-            .then((rows: number) => db.Post.destroy({where: {}}))
-            .then((rows: number) => db.User.destroy({where: {}}))
-            .then((rows: number) => db.User.create(
+        return  db.User.create(
                 {
-                    name: 'Peter Quill',
-                    email: 'peter@guardians.com',
+                    name: 'IronMan',
+                    email: 'iron@guardians.com',
                     password: '1234'
                 }
-            )).catch(handleError);
+            ).catch(handleError);
     });
 
     describe('Mutations', () => {
@@ -32,7 +29,7 @@ describe('Token', () => {
                             }
                         `,
                         variables: {
-                            email: 'peter@guardians.com',
+                            email: 'iron@guardians.com',
                             password: '1234'
                         }
                     };
@@ -61,7 +58,7 @@ describe('Token', () => {
                             }
                         `,
                         variables: {
-                            email: 'peter@guardians.com',
+                            email: 'iron@guardians.com',
                             password: 'WRONG_PASSWORD'
                         }
                     };

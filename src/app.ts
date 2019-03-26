@@ -14,7 +14,7 @@ import { extractJwtMiddleware } from './middlewares/extract-jwt.middleware';
 import { DataLoaderFactory } from './graphql/dataloaders/DataLoaderFactory';
 import { RequestedFields } from './graphql/ast/RequestedFields';
 import { apolloUploadExpress } from 'apollo-upload-server' // ACREDITO QUE NAO SERA MAIS NECESSARIO USAR O APOLLO
-import * as multipart from 'connect-multiparty'
+//import * as multipart from 'connect-multiparty'
 import  PostController  from './rest/PostController';
 import ScheduleController from './rest/ScheduleController';
 

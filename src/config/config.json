@@ -9,7 +9,7 @@
     "test": {
       "username": "root",
       "password": "obscure345",
-      "database": "neurabd",
+      "database": "jaguar",
       "host": "127.0.0.1",
       "dialect": "mysql",
       "logging": false
@@ -17,7 +17,7 @@
     "production": {
       "username": "root",
       "password": "obscure345",
-      "database": "neurabd",
+      "database": "jaguar",
       "host": "127.0.0.1",
       "dialect": "mysql"
     },

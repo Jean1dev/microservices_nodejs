@@ -10,29 +10,23 @@ describe('User', () => {
     let userId: number;
 
     beforeEach(() => {
-        return db.Comment.destroy({where: {}})
-            .then((rows: number) => db.Post.destroy({where: {}}))
-            .then((rows: number) => db.User.destroy({where: {}}))
-            .then((rows: number) => db.User.bulkCreate([
+        return db.User.bulkCreate([
                 {
                     name: 'Peter Quill',
                     email: 'peter@guardians.com',
-                    password: '1234',
-                    flcleaner: true
+                    password: '1234'
                 },
                 {
                     name: 'Gamora',
                     email: 'gamora@guardians.com',
-                    password: '1234',
-                    flcleaner: true
+                    password: '1234'
                 },
                 {
                     name: 'Groot',
                     email: 'groot@guardians.com',
-                    password: '1234',
-                    flcleaner: true
+                    password: '1234'
                 }
-            ])).then((users: UserInstance[]) => {
+            ]).then((users: UserInstance[]) => {
                 userId = users[0].get('id');
                 const payload = {sub: userId};
                 token = jwt.sign(payload, JWT_SECRET);
@@ -66,7 +60,7 @@ describe('User', () => {
                             const usersList = res.body.data.users;
                             expect(res.body.data).to.be.an('object');
                             expect(usersList).to.be.an('array');
-                            expect(usersList[0]).to.not.have.keys(['id', 'photo', 'createdAt', 'updatedAt', 'posts'])
+                            expect(usersList[0]).to.not.have.keys(['id', 'photo', 'createdAt', 'updatedAt'])
                             expect(usersList[0]).to.have.keys(['name', 'email']);
                         }).catch(handleError);
 
@@ -98,7 +92,7 @@ describe('User', () => {
                             const usersList = res.body.data.users;
                             expect(res.body.data).to.be.an('object');
                             expect(usersList).to.be.an('array').of.length(2);
-                            expect(usersList[0]).to.not.have.keys(['id', 'photo', 'updatedAt', 'posts'])
+                            expect(usersList[0]).to.not.have.keys(['id', 'photo', 'updatedAt'])
                             expect(usersList[0]).to.have.keys(['name', 'email', 'createdAt']);
                         }).catch(handleError);
 
@@ -117,9 +111,6 @@ describe('User', () => {
                                     id
                                     name
                                     email
-                                    posts {
-                                        title
-                                    }
                                 }
                             }
                         `,
@@ -136,7 +127,7 @@ describe('User', () => {
                             const singleUser = res.body.data.user;
                             expect(res.body.data).to.be.an('object');
                             expect(singleUser).to.be.an('object');
-                            expect(singleUser).to.have.keys(['id', 'name', 'email', 'posts']);
+                            expect(singleUser).to.have.keys(['id', 'name', 'email']);
                             expect(singleUser.name).to.equal('Peter Quill');
                             expect(singleUser.email).to.equal('peter@guardians.com');
                         }).catch(handleError);
