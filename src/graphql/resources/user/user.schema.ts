@@ -13,6 +13,7 @@ const userTypes = `
         price: Float
         cpf: Int
         description: String
+        cdempresa: Int
         createdAt: String!
         updatedAt: String!
         services(first: Int, offset: Int): [ Service! ]!

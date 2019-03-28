@@ -1,6 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 
-import { app, db, chai, handleError, expect } from './../../test-utils';
+import { app, db, chai, handleError, expect } from '../../test-utils';
 import { UserInstance } from '../../../src/models/UserModel';
 import { JWT_SECRET } from '../../../src/utils/utils';
 

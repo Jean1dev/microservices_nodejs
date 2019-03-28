@@ -15,6 +15,7 @@ export interface UserAttributes {
     photo?: string
     price?: number
     cpf?: number
+    cdempresa?: number
     createdAt?: string
     updatedAt?: string
 }
@@ -61,7 +62,7 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             type: DataTypes.STRING(128),
             allowNull: true
         },
-        contact_2:{
+        contact_2: {
             type: DataTypes.STRING(128),
             allowNull: true
         },
@@ -80,6 +81,11 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             }),
             allowNull: true,
             defaultValue: null
+        },
+        cdempresa: {
+            type: DataTypes.DECIMAL,
+            allowNull: false,
+            defaultValue: 0
         }
     }, {
             tableName: 'users',
@@ -89,7 +95,7 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
                     user.password = hashSync(user.password, salt)
                 },
                 beforeUpdate: (user: UserInstance, option: Sequelize.CreateOptions): void => {
-                    if (user.changed('password')){
+                    if (user.changed('password')) {
                         const salt = genSaltSync()
                         user.password = hashSync(user.password, salt)
                     }
@@ -97,13 +103,16 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             }
         })
 
-   /* User.associate = (models: ModelsInterface): void => {
-        User.hasMany(models.Service, { as: 'user', foreignKey: 'iduser'})
-        User.hasMany(models.Post)
-        User.hasMany(models.Payment)
-        User.hasMany(models.Complaints)
-        User.hasMany(models.Schedule)
-    }*/
+    User.associate = (models: ModelsInterface): void => {
+        User.hasOne(models.Empresa, { as: 'user', foreignKey: 'cdempresa' })
+    }
+    /* User.associate = (models: ModelsInterface): void => {
+         User.hasMany(models.Service, { as: 'user', foreignKey: 'iduser'})
+         User.hasMany(models.Post)
+         User.hasMany(models.Payment)
+         User.hasMany(models.Complaints)
+         User.hasMany(models.Schedule)
+     }*/
 
     User.prototype.isPassword = (encodedPassword: string, password: string): boolean => {
         return compareSync(password, encodedPassword)

@@ -5,6 +5,7 @@ import { ScheduleModel } from "../models/ScheduleModel";
 import { PaymentModel } from "../models/PaymentsModel";
 import { AddressModel } from "../models/AddressModel";
 import { CityModel } from "../models/CityModel";
+import { EmpresaModel } from '../models/Empresa';
 
 export interface ModelsInterface {
     User: UserModel
@@ -14,4 +15,5 @@ export interface ModelsInterface {
     Address: AddressModel
     City: CityModel
     PagSeguro: PagSeguroModel
+    Empresa: EmpresaModel
 }
