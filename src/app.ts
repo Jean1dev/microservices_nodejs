@@ -1,3 +1,4 @@
+import  WhatsAppController  from './rest/WhatsAppController';
 import  EmpresaController  from './rest/EmpresaController';
 import  PagSeguroController  from './rest/PagSeguroController';
 import  TempController  from './rest/TempController';
@@ -18,7 +19,6 @@ import { apolloUploadExpress } from 'apollo-upload-server' // ACREDITO QUE NAO S
 //import * as multipart from 'connect-multiparty'
 import  PostController  from './rest/PostController';
 import ScheduleController from './rest/ScheduleController';
-
 
 class App {
 
@@ -72,6 +72,7 @@ class App {
         this.express.use('/app', (req, res) => {
             res.sendFile('app.html', { root: path.join(__dirname, './public/app')})
         })
+        this.express.use('/rest/whats', WhatsAppController)
         this.express.use('/rest/empresa', EmpresaController)
         this.express.use('/rest/user', UserController)
         this.express.use('/rest/post', PostController) //

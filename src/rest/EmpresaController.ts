@@ -1,5 +1,6 @@
 import { GeneralController } from './GeneralController';
 import { Response, NextFunction } from 'express';
+import { EmpresaPersistence } from '../persistence/EmpresaPersistence';
 
 export class EmpresaController extends GeneralController{
 
@@ -12,7 +13,10 @@ export class EmpresaController extends GeneralController{
     }
 
     post(req: any, res: Response, next: NextFunction) {
-        res.send(req.body)
+        let db = new EmpresaPersistence()
+        db.save(req.body).then((response) => {
+            res.send(req.body)
+        })
     }
 
 }
