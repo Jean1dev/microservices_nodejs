@@ -15,7 +15,7 @@
       "logging": false
     },
     "production": {
-      "username": "admin",
+      "username": "root",
       "password": "c5702c3270b3b7ccfc14049e2736edbacfd59480cc01d0e8",
       "database": "jaguardb",
       "host": "127.0.0.1",
