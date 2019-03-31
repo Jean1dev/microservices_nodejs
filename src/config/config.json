@@ -15,10 +15,10 @@
       "logging": false
     },
     "production": {
-      "username": "root",
-      "password": "",
-      "database": "jaguardb",
-      "host": "127.0.0.1",
+      "username": "jean345",
+      "password": "obscure345",
+      "database": "jean345_prod_jaguar",
+      "host": "64.62.211.134",
       "dialect": "mysql"
     },
     "pipelines": {
