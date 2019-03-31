@@ -29,7 +29,7 @@ class App {
         this.dataLoaderFactory = new DataLoaderFactory(db, this.requestedFields)
         this.middleware()
         this.routes()
-        this.startMongo()
+        //this.startMongo()
     }
 
     private startMongo(): void {
