@@ -15,9 +15,9 @@
       "logging": false
     },
     "production": {
-      "username": "root",
-      "password": "3y8raz35",
-      "database": "jaguar",
+      "username": "admin",
+      "password": "c5702c3270b3b7ccfc14049e2736edbacfd59480cc01d0e8",
+      "database": "jaguardb",
       "host": "127.0.0.1",
       "dialect": "mysql"
     },
