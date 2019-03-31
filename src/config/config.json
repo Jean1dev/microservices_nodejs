@@ -16,7 +16,7 @@
     },
     "production": {
       "username": "root",
-      "password": "obscure345",
+      "password": "3y8raz35",
       "database": "jaguar",
       "host": "127.0.0.1",
       "dialect": "mysql"
