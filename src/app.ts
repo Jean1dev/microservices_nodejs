@@ -1,15 +1,9 @@
-import  WhatsAppController  from './rest/WhatsAppController';
-import  EmpresaController  from './rest/EmpresaController';
-import  PagSeguroController  from './rest/PagSeguroController';
-import  TempController  from './rest/TempController';
-import  UserController  from './rest/UserController';
 import * as express from 'express'
 import * as graphqlHTTP from 'express-graphql'
 import * as cors from 'cors'
 import * as compression from 'compression'
 import * as helmet from 'helmet'
 import * as bodyParser from "body-parser";
-import * as path from 'path'
 import schema from './graphql/schema';
 import db from './models'
 import { extractJwtMiddleware } from './middlewares/extract-jwt.middleware';
@@ -17,8 +11,7 @@ import { DataLoaderFactory } from './graphql/dataloaders/DataLoaderFactory';
 import { RequestedFields } from './graphql/ast/RequestedFields';
 import { apolloUploadExpress } from 'apollo-upload-server' // ACREDITO QUE NAO SERA MAIS NECESSARIO USAR O APOLLO
 //import * as multipart from 'connect-multiparty'
-import  PostController  from './rest/PostController';
-import ScheduleController from './rest/ScheduleController';
+const mongo = require('./config/db.nosql')
 
 class App {
 
@@ -36,6 +29,11 @@ class App {
         this.dataLoaderFactory = new DataLoaderFactory(db, this.requestedFields)
         this.middleware()
         this.routes()
+        this.startMongo()
+    }
+
+    private startMongo(): void {
+        mongo()
     }
 
     private middleware(): void {
@@ -61,24 +59,6 @@ class App {
     }
 
     private routes():void {
-
-        let router = express.Router()
-        // URI/ON    -> RETORNA SE A API ESTA ONLINE
-        router.get('/on', (req: express.Request, res: express.Response, next: express.NextFunction) => {
-            res.json({ status: 'ON'})
-        })
-
-        this.express.use(express.static(__dirname + '/public'))
-        this.express.use('/app', (req, res) => {
-            res.sendFile('app.html', { root: path.join(__dirname, './public/app')})
-        })
-        this.express.use('/rest/whats', WhatsAppController)
-        this.express.use('/rest/empresa', EmpresaController)
-        this.express.use('/rest/user', UserController)
-        this.express.use('/rest/post', PostController) //
-        this.express.use('/rest/schedule', ScheduleController) //
-        this.express.use('/rest/pagseguro', PagSeguroController)
-        this.express.use('/', TempController) //
         this.express.use('/graphql', apolloUploadExpress({ maxFileSize: 1000000, maxFiles: 10}),
 
             extractJwtMiddleware(),
@@ -96,7 +76,8 @@ class App {
                 context: req['context']
             })))
 
-        this.express.use('/', router)
+        //this.express.use('/', router)
+        this.express.use(require('./routes'))
     }
 }
 

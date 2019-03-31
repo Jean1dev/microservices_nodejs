@@ -1,6 +1,7 @@
 import { GeneralController } from "./GeneralController";
 import { Response } from "express";
 import { NextFunction } from "connect";
+import { store, getAll } from "../persistence/NumberPersistence";
 
 const SchemaNumber = require("../models/NumberStatisticModel")
 const mongo = require("../config/db.nosql")
@@ -8,7 +9,7 @@ const twilio = null//require('twilio')
 const request = require("request")
 const accountSid = 'AC31b0f31556cd04ac150e0c3601b05ad7'
 const authToken = '81237618671884f1488b4ea53b0aeabe'
-const authAPiWha = 'T5O62OP629TI61BD3O8R'
+const authAPiWha = 'OZ50RZ1GBJ6L59LJQAPP'
 
 // https://www.twilio.com/docs/libraries/node
 
@@ -16,9 +17,19 @@ export class WhatsAppController extends GeneralController {
 
     init(): void {
         this.router.post('/test', this.sendWhatsApiCha)
+        this.router.post('/test2', this.test2)
     }
 
-    public sendWhatsApiCha(req: any, res: Response, next: NextFunction) {
+    public async test2(req: any, res: Response, next: NextFunction) {
+        await      store({
+            author: "",
+            number: req.body.number,
+            sent: 1
+        })
+        return res.json(await getAll())
+    }
+
+    public async sendWhatsApiCha(req: any, res: Response, next: NextFunction) {
         var options = {
             method: 'GET',
             url: 'https://panel.apiwha.com/send_message.php',
@@ -30,18 +41,18 @@ export class WhatsAppController extends GeneralController {
             }
         };
 
-        request(options, function (error, response, body) {
+        await request(options, async function (error, response, body) {
             if (error) throw new Error(error);
-            const resp = body
+            const resp = JSON.parse(body)
             res.send(resp)
             if(resp.success){
-                this.store({
+                store({
                     author: "",
                     number: req.body.number,
                     sent: 1
                 })
             }
-        });
+        }.bind(this)) //ARRUMAR UM JEITO DE FAZER O BIND PARA O CALLBACK TER ACESSO AO THIS
     }
 
     public sendWhatsTwilio(req: any, res: Response, next: NextFunction) {
@@ -57,11 +68,6 @@ export class WhatsAppController extends GeneralController {
 
     }
 
-    private async store(content: any): Promise<void> {
-        mongo()
-        const ret = await SchemaNumber.create(content)
-        console.log(ret)
-    }
 }
 
 const whats = new WhatsAppController()

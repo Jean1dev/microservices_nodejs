@@ -4,15 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clusters": "JWT_SECRET=neura NODE_ENV=production port=8079 node dist/clusters",
+    "clusters": "JWT_SECRET=3y8raz35 NODE_ENV=production port=8079 node dist/clusters",
     "build": "npm run gulp build",
     "start": "npm run build && npm run clusters",
     "test": "NODE_ENV=test JWT_SECRET=neura mocha",
     "report": "nyc --extension .ts --include 'src/**/*.ts' --reporter html npm test",
     "gulp": "node_modules/.bin/gulp",
-    "dev": "NODE_ENV=development JWT_SECRET=neura node_modules/.bin/nodemon --delay 8 dist/index",
-    "debug": "npm run build && npm run dev",
-    "test-paulo": "JWT_SECRET=neura NODE_ENV=test port=3000 node dist/clusters"
+    "dev": "NODE_ENV=development JWT_SECRET=3y8raz35 node_modules/.bin/nodemon --delay 8 dist/index",
+    "debug": "npm run build && npm run dev"
   },
   "author": "jean",
   "license": "ISC",
