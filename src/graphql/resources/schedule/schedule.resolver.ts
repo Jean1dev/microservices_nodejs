@@ -62,12 +62,12 @@ export const scheduleResolvers = {
             }).catch(handleError);
         },
         // DEPRECIADO
-        cleanersBySchedule: (parent, { id, first = 10, offset = 0 }, context: ResolverContext, info: GraphQLResolveInfo) => {
+        /*cleanersBySchedule: (parent, { id, first = 10, offset = 0 }, context: ResolverContext, info: GraphQLResolveInfo) => {
             id = parseInt(id);
             return context.db.sequelize.query(selectDistinctUsersBySchedule(id)).then(users => {
                 return users
             }).catch(handleError)
-        }
+        }*/
     },
 
     Mutation: {
