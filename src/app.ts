@@ -29,7 +29,7 @@ class App {
         this.dataLoaderFactory = new DataLoaderFactory(db, this.requestedFields)
         this.middleware()
         this.routes()
-        //this.startMongo()
+        this.startMongo()
     }
 
     private startMongo(): void {
@@ -72,7 +72,8 @@ class App {
 
             graphqlHTTP((req) => ({
                 schema: schema,
-                graphiql: process.env.NODE_ENV === 'development',
+                graphiql: true, // qnd tiver realmente em producao usar a linha de baixo
+                //graphiql: process.env.NODE_ENV === 'development',
                 context: req['context']
             })))
 

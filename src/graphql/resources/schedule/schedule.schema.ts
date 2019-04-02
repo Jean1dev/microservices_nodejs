@@ -27,7 +27,6 @@ const scheduleType = `
 const scheduleQueries = `
     schedules(first: Int, offset: Int): [ Schedule! ]!
     schedule(id: ID!): Schedule
-    cleanersBySchedule(id: ID!, first: Int, offset: Int): [ Schedule ]
     myschedules(id: ID!, first: Int, offset: Int): [ Schedule! ]!
     yourschedules(id: ID!, first: Int, offset: Int): [ Schedule! ]!
 `
