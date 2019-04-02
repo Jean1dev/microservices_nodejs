@@ -7,7 +7,6 @@ const userTypes = `
         email: String!
         contact_1: String
         contact_2: String
-        flcleaner: Boolean!
         rating: Float!
         photo: String
         price: Float
