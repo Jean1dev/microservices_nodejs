@@ -16,7 +16,7 @@
     },
     "production": {
       "username": "root",
-      "password": "",
+      "password": "odhwoqhduwqhdoqwuhd112873",
       "database": "jaguardb",
       "host": "localhost",
       "dialect": "mysql"
