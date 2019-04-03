@@ -33,7 +33,7 @@ export const onListening = (server: Server) => {
     return (): void => {
         let addr = server.address();
         let bind = (typeof addr === 'string') ? `pipe ${addr}` : `port ${addr.port}`;
-        console.log(`Listening at ${bind}... time: ${Date.now()}`);
+        console.log(`Listening at ${bind}... time: ${getTimeNow()}`);
     }
 }
 
@@ -115,6 +115,7 @@ export const uploadFile_Temp_ = (args) => {
     })
 }
 
+//REFATORAR
 export const getUrl = () => {
     if (process.env.NODE_ENV == 'production') return `http://142.93.115.52:${process.env.port}`
     return 'http://localhost:3000'
