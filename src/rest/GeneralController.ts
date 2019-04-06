@@ -6,7 +6,7 @@ import db from './../models'
  * 
  * https://mherman.org/blog/2016/11/05/developing-a-restful-api-with-node-and-typescript/
  */
-export class GeneralController {
+export abstract class GeneralController {
 
     router: Router
     db: any
@@ -15,6 +15,8 @@ export class GeneralController {
     {
         this.router = Router()
     }
+
+    public abstract init(): void 
 
     public async isAuthorized(token): Promise<boolean> {
         let authorization = token ? token.split(' ')[1] : undefined

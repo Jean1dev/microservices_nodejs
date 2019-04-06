@@ -6,6 +6,7 @@ import  PostController  from './rest/PostController';
 import  ScheduleController  from './rest/ScheduleController';
 import  PagSeguroController  from './rest/PagSeguroController';
 import  TempController  from './rest/TempController';
+import SMSController from './rest/SMSController'
 import * as path from 'path'
 
 const router = express.Router()
@@ -18,6 +19,7 @@ router.use(express.static(__dirname + '/public'))
 router.use('/app', (req, res) => {
     res.sendFile('app.html', { root: path.join(__dirname, './public/app')})
 })
+router.use('/rest/sms', SMSController)
 router.use('/rest/whats', WhatsAppController)
 router.use('/rest/empresa', EmpresaController)
 router.use('/rest/user', UserController)

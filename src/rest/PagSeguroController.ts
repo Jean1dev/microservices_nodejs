@@ -3,7 +3,7 @@ import { GeneralController } from './GeneralController';
 import database from '../models'
 import * as request from 'request'
 import { insertIDPagSeguro } from '../utils/gerenciadorSQl';
-import { pagSeguroToken, pagSeguroEmail } from '../utils/pagSeguroInfo';
+import { pagSeguroEmail, pagSeguroToken } from '../utils/Constantes';
 
 export class PagSeguroController extends GeneralController {
 

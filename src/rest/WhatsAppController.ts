@@ -2,20 +2,22 @@ import { GeneralController } from "./GeneralController";
 import { Response } from "express";
 import { NextFunction } from "connect";
 import { store, getAll } from "../persistence/NumberPersistence";
+import { authAPiWha, twilioAccountSid, twilioToken } from "../utils/Constantes";
 
 const SchemaNumber = require("../models/NumberStatisticModel")
 const mongo = require("../config/db.nosql")
 const twilio = null//require('twilio')
 const request = require("request")
-const accountSid = 'AC31b0f31556cd04ac150e0c3601b05ad7'
-const authToken = '81237618671884f1488b4ea53b0aeabe'
-const authAPiWha = 'OZ50RZ1GBJ6L59LJQAPP'
+//const accountSid = ''
+//const authToken = ''
+//const authAPiWha = ''
 
 // https://www.twilio.com/docs/libraries/node
 
 export class WhatsAppController extends GeneralController {
 
     init(): void {
+        //url /rest/whats
         this.router.post('/test', this.sendWhatsApiCha)
         this.router.post('/test2', this.test2)
     }
@@ -56,7 +58,7 @@ export class WhatsAppController extends GeneralController {
     }
 
     public sendWhatsTwilio(req: any, res: Response, next: NextFunction) {
-        let client = new twilio(accountSid, authToken)
+        let client = new twilio(twilioAccountSid, twilioToken)
         client.messages.create({
             body: 'Hello from NodeJs, twilio api',
             to: '+554899972322',  // Text this number
