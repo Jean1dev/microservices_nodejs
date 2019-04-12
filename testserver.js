@@ -17,7 +17,7 @@ app.use(function(req, res, next){
 	next();
 });
 
-const port = 8080
+const port = 80
 app.listen(port)
 console.log('Servidor HTTP esta escutando na porta ' + port);
 
