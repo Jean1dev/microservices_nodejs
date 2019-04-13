@@ -6,6 +6,8 @@ import * as fs from 'fs'
 import * as url from 'url'
 import * as mime from 'mime'
 import MailService from '../services/MailService';
+import { isAuthorized } from '../middlewares/extract-jwt.middleware';
+import { store, getAll } from '../persistence/NumberPersistence';
 
 export class TempController extends GeneralController {
 
@@ -14,10 +16,33 @@ export class TempController extends GeneralController {
     }
 
     init(): void {
+        //URL root localhost/
         this.router.get('/uploads/*.*', this.get)
         this.router.post('/uploads', this.uploadphoto)
         this.router.get('/', this.showSite)
         this.router.post('/report', this.bugReporter)
+        this.router.get('/token', this.validarToken)
+        this.router.post('/mongo', this.testMongo)
+    }
+
+
+    public async testMongo(req: any, res: Response, next: NextFunction) {
+        await store({
+            author: "",
+            number: req.body.number,
+            sent: 1
+        })
+        return res.json(await getAll())
+    }
+
+    async validarToken(req: any, res: Response, next: NextFunction) {
+        let authorization: string = req.get('authorization')
+        if (await isAuthorized(req)){
+            res.end('sim')
+        }else {
+            res.end('nao')
+        }
+        
     }
 
     showSite(req: any, res: Response, next: NextFunction) {

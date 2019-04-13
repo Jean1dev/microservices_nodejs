@@ -1,7 +1,7 @@
 import { GeneralController } from "./GeneralController";
 import { Response } from "express";
 import { NextFunction } from "connect";
-import { store, getAll } from "../persistence/NumberPersistence";
+import { store } from "../persistence/NumberPersistence";
 import { authAPiWha, twilioAccountSid, twilioToken } from "../utils/Constantes";
 
 const SchemaNumber = require("../models/NumberStatisticModel")
@@ -19,16 +19,6 @@ export class WhatsAppController extends GeneralController {
     init(): void {
         //url /rest/whats
         this.router.post('/test', this.sendWhatsApiCha)
-        this.router.post('/test2', this.test2)
-    }
-
-    public async test2(req: any, res: Response, next: NextFunction) {
-        await      store({
-            author: "",
-            number: req.body.number,
-            sent: 1
-        })
-        return res.json(await getAll())
     }
 
     public async sendWhatsApiCha(req: any, res: Response, next: NextFunction) {

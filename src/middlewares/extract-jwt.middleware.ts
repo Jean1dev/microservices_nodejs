@@ -40,3 +40,18 @@ export const extractJwtMiddleware = (): RequestHandler => {
     }
 
 }
+
+export const isAuthorized = async req => {
+    let authorization: string = req.get('authorization')
+    let token: string = authorization ? authorization.split(' ')[1] : undefined
+    if (!authorization) return false
+    let ret = await jwt.verify(token, JWT_SECRET, async (err, decoded: any) => {
+        if(err) return false
+        console.log(`decod`,decoded.sub)
+        const res = await db.User.findById(decoded.sub, {
+            attributes: ['id', 'email']
+        })
+        return (res != null)
+    })
+    return ret
+}

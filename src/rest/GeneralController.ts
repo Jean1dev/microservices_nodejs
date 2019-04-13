@@ -1,5 +1,4 @@
 import { JWT_SECRET } from './../utils/utils';
-import * as jwt from 'jsonwebtoken'
 import {Router, Request, Response, NextFunction} from 'express';
 import db from './../models'
 /**
@@ -18,10 +17,4 @@ export abstract class GeneralController {
 
     public abstract init(): void 
 
-    public async isAuthorized(token): Promise<boolean> {
-        let authorization = token ? token.split(' ')[1] : undefined
-        if (!authorization) return false
-        token = await jwt.sign(authorization, JWT_SECRET)
-        return true
-    }
 }
