@@ -1,5 +1,5 @@
 import { GeneralController } from './GeneralController';
-import {Router, Request, Response, NextFunction} from 'express';
+import { Response, NextFunction} from 'express';
 import * as formidable from 'formidable'
 import { createDirectoryUpload, PATH_IMG } from '../utils/utils';
 import * as fs from 'fs'
@@ -8,6 +8,7 @@ import * as mime from 'mime'
 import MailService from '../services/MailService';
 import { isAuthorized } from '../middlewares/extract-jwt.middleware';
 import { store, getAll } from '../persistence/NumberPersistence';
+import * as path from 'path'
 
 export class TempController extends GeneralController {
 
@@ -46,7 +47,7 @@ export class TempController extends GeneralController {
     }
 
     showSite(req: any, res: Response, next: NextFunction) {
-        res.end('not implemented')
+        res.sendFile('index.html', { root: path.join(__dirname, '../public/')})
     }
 
     bugReporter(req: any, res: Response, next: NextFunction) {
