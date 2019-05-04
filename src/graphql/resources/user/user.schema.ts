@@ -9,7 +9,7 @@ const userTypes = `
         contact_2: String
         rating: Float!
         photo: String
-        price: Float
+        operador: Boolean
         cpf: Int
         description: String
         cdempresa: Int
@@ -32,7 +32,7 @@ const userTypes = `
         contact_1: String
         contact_2: String
         flcleaner: Boolean
-        price : Float
+        operador : Boolean
         description: String
         rating: Float
         cpf: Int

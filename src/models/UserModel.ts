@@ -13,7 +13,7 @@ export interface UserAttributes {
     description?: string
     rating?: number
     photo?: string
-    price?: number
+    operador?: boolean
     cpf?: number
     cdempresa?: number
     createdAt?: string
@@ -71,8 +71,8 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             allowNull: false,
             defaultValue: 0.00
         },
-        price: {
-            type: DataTypes.DECIMAL,
+        operador: {
+            type: DataTypes.BOOLEAN,
             allowNull: true
         },
         photo: {
