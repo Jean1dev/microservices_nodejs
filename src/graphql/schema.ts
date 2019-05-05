@@ -12,13 +12,16 @@ import { paymentType } from './resources/payments/payment.schema';
 import { scheduleType } from './resources/schedule/schedule.schema';
 import { scheduleResolvers } from './resources/schedule/schedule.resolver';
 import { paymentResolvers } from './resources/payments/payment.resolver';
+import { campanhaType } from './resources/campanha/campanha.schema';
+import { campanhaResolvers } from './resources/campanha/campanha.resolver';
 
 const resolvers = merge(
     userResolvers,
     tokenResolvers,
     serviceResolvers,
     scheduleResolvers,
-    paymentResolvers
+    paymentResolvers,
+    campanhaResolvers
 )
 
 const SchemaDefinition = `
@@ -37,7 +40,8 @@ export default makeExecutableSchema({
         tokenTypes,
         serviceType,
         paymentType,
-        scheduleType
+        scheduleType,
+        campanhaType
     ],
     resolvers
 })

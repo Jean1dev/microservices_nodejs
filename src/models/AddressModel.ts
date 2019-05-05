@@ -9,7 +9,6 @@ export interface AddressAttributes {
     updatedAt?: string
 }
 
-
 export interface AddressInstance extends Sequelize.Instance<AddressAttributes> { }
 
 export interface AddressModel extends BaseModelInterface, Sequelize.Model<AddressInstance, AddressAttributes> { }
