@@ -6,13 +6,13 @@ export abstract class GenericPersistence<T> implements CrudInterface<T>{
     save(content: any) {
         throw new Error("Method not implemented.");
     }
-    update(id: any) {
+    update(id: any, content?: any) {
         throw new Error("Method not implemented.");
     }
     getAll() {
         throw new Error("Method not implemented.");
     }
-    getOne() {
+    getOne(_id: any) {
         throw new Error("Method not implemented.");
     }
     destroy() {

@@ -17,6 +17,7 @@ const userTypes = `
         updatedAt: String!
         services(first: Int, offset: Int): [ Service! ]!
         payments(first: Int, offset: Int): [ Payment! ]!
+        campanhas(first: Int, offset: Int): [ Campanha! ]!
     }
 
     input UserCreateInput {

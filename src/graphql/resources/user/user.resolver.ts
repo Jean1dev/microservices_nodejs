@@ -34,6 +34,15 @@ export const userResolvers = {
                 }).catch(handleError)
         },
 
+        campanhas: (user, { first = 10, offset = 0 }, { db, requestedFields }: { db: DbConnection, requestedFields: RequestedFields }, info: GraphQLResolveInfo) => {
+            return db.Campanha
+                .findAll({
+                    where: { iduser: user.get('id') },
+                    limit: first,
+                    offset: offset
+                }).catch(handleError)
+        }
+
         /*complaints: (user, { first = 10, offset = 0 }, { db, requestedFields }: { db: DbConnection, requestedFields: RequestedFields }, info: GraphQLResolveInfo) => {
             return db.Complaints
                 .findAll({

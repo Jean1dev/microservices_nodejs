@@ -1,17 +1,24 @@
-import { DataLoaders } from './../../../interface/DataLoadersInterface';
-import { AuthUser } from './../../../interface/AuthUserInterface';
-import { DbConnection } from './../../../interface/DbConnectionInterface';
-import { GraphQLResolveInfo } from 'graphql';
-import { ResolverContext } from './../../../interface/ResolverContext';
-import { authResolvers } from '../../composable/auth.resolver';
-import { compose } from '../../composable/composable.resolver';
-import { CampanhaPersistence } from '../../../persistence/CampanhaPersistence';
-import { handleError } from '../../../utils/utils';
+import { CampanhaPersistence } from './../../../persistence/CampanhaPersistence';
+import { DbConnection } from "../../../interface/DbConnectionInterface";
+import { DataLoaders } from "../../../interface/DataLoadersInterface";
+import { GraphQLResolveInfo } from "graphql";
+import { handleError, throwError } from "../../../utils/utils";
+import { ResolverContext } from "../../../interface/ResolverContext";
+import { compose } from "../../composable/composable.resolver";
+import { authResolvers } from "../../composable/auth.resolver";
+import { AuthUser } from "../../../interface/AuthUserInterface";
+import { RequestedFields } from '../../ast/RequestedFields';
 
 export const campanhaResolvers = {
     Campanha: {
         iduser: (parent, args, { db, dataloaders: { userLoader } }: { db: DbConnection, dataloaders: DataLoaders }, info: GraphQLResolveInfo) => {
             return userLoader.load({ key: parent.get('iduser'), info }).catch(handleError)
+        },
+
+        idcarteira: (parent, { first = 10, offset = 0 }, { db, requestedFields }: { db: DbConnection, requestedFields: RequestedFields }, info: GraphQLResolveInfo) => {
+            return db.Carteira.findAll({
+                where: { id: parent.get('idcarteira')}
+            })
         }
     },
 
@@ -21,9 +28,10 @@ export const campanhaResolvers = {
             return await data.getAllByIdUser(authUser.id)
         }),
 
-        campanha: (parent, { id }, context: ResolverContext, info: GraphQLResolveInfo) => {
-
-        }
+        campanha: compose(...authResolvers)(async (parent, { id }, context: ResolverContext, info: GraphQLResolveInfo) => {
+            let data = new CampanhaPersistence
+            return await data.getOne(id)
+        })
     },
 
     Mutation: {
@@ -34,8 +42,12 @@ export const campanhaResolvers = {
             return ret
         }),
 
-        updateCampanha: compose(...authResolvers)((parent, { input }, { db, authUser }: { db: DbConnection, authUser: AuthUser }, info: GraphQLResolveInfo) => {
-            
+        updateCampanha: compose(...authResolvers)(async (parent, { id, input }, { db, authUser }: { db: DbConnection, authUser: AuthUser }, info: GraphQLResolveInfo) => {
+            id = parseInt(input.id)
+            let data = new CampanhaPersistence
+            let res = await data.update(id, input)
+            throwError(res.get('iduser') != authUser.id, `Unauthorized! You can only edit Campanha by yourself!`)
+            return res
         }),
     },
 }

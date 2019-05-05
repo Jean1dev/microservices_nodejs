@@ -4,6 +4,7 @@ import { serviceMutations } from "./resources/service/service.schema";
 import { scheduleMutations } from "./resources/schedule/schedule.schema";
 import { paymentMutations } from "./resources/payments/payment.schema";
 import { campanhaMutations } from "./resources/campanha/campanha.schema";
+import { carteiraMutations } from "./resources/carteira/carteira.schema";
 
 const Mutation = `
     type Mutation {
@@ -13,6 +14,7 @@ const Mutation = `
         ${scheduleMutations}
         ${paymentMutations}
         ${campanhaMutations}
+        ${carteiraMutations}
     }
 `
 

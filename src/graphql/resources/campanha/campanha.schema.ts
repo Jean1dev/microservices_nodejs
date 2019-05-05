@@ -10,9 +10,11 @@ const campanhaType = `
         mailing: String
         ativo: Boolean
         iduser: User
+        idcarteira: Carteira
     }
 
     input CampanhaCreateInput {
+        id: ID
         hr_inicio: String
         dt_inicio: String
         total_contatos: Int!
@@ -20,6 +22,7 @@ const campanhaType = `
         mensagem: String!
         mailing: String!
         ativo: Boolean
+        idcarteira: Int
     }
 `
 

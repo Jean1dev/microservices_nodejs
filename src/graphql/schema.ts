@@ -14,6 +14,8 @@ import { scheduleResolvers } from './resources/schedule/schedule.resolver';
 import { paymentResolvers } from './resources/payments/payment.resolver';
 import { campanhaType } from './resources/campanha/campanha.schema';
 import { campanhaResolvers } from './resources/campanha/campanha.resolver';
+import { carteiraResolvers } from './resources/carteira/carteira.resolver';
+import { carteiraType } from './resources/carteira/carteira.schema';
 
 const resolvers = merge(
     userResolvers,
@@ -21,7 +23,8 @@ const resolvers = merge(
     serviceResolvers,
     scheduleResolvers,
     paymentResolvers,
-    campanhaResolvers
+    campanhaResolvers,
+    carteiraResolvers
 )
 
 const SchemaDefinition = `
@@ -41,7 +44,8 @@ export default makeExecutableSchema({
         serviceType,
         paymentType,
         scheduleType,
-        campanhaType
+        campanhaType,
+        carteiraType
     ],
     resolvers
 })

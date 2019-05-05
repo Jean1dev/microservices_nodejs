@@ -6,6 +6,6 @@ export interface CrudInterface<T>{
     save(content)
     update(id)
     getAll()
-    getOne()
+    getOne(id)
     destroy()
 }

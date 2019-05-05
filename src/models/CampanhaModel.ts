@@ -1,6 +1,6 @@
-import { CampanhaAttributes } from './CampanhaModel';
 import * as Sequelize from 'sequelize'
 import { BaseModelInterface } from '../interface/BaseModelInterface';
+import { ModelsInterface } from '../interface/ModelsInterface';
 
 export interface CampanhaAttributes {
     id?: number
@@ -53,31 +53,30 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             allowNull: true
         },
         mailing: {
-            type: DataTypes.BLOB({ length: 'long'}),
+            type: DataTypes.BLOB({ length: 'long' }),
             allowNull: false,
         },
         ativo: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         },
-        iduser: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0
-        },
         idcarteira: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             defaultValue: 0
         }
     }, {
-        tableName: `campanha`
-    })
+            tableName: `campanha`
+        })
 
-    /*Campanha.associate = (models: ModelsInterface): void => {
-        Campanha.hasOne(models.User, { foreignKey: 'iduser'})
-        Campanha.hasOne(models.Carteira, { foreignKey: 'idcarteira'} )
-    }*/
-
+    Campanha.associate = (models: ModelsInterface): void => {
+        Campanha.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false,
+                field: 'iduser',
+                name: 'iduser'
+            }
+        })
+        Campanha.hasOne(models.Carteira, { foreignKey: 'idcarteira'})
+    }
     return Campanha
 }

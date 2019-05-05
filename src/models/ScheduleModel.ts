@@ -16,7 +16,6 @@ export interface ScheduleAttributes {
     updatedAt?: string
 }
 
-
 export interface ScheduleInstance extends Sequelize.Instance<ScheduleAttributes> { }
 
 export interface ScheduleModel extends BaseModelInterface, Sequelize.Model<ScheduleInstance, ScheduleAttributes> { }
