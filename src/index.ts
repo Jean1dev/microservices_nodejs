@@ -10,7 +10,7 @@ const server = http.createServer(app)
 //})
 const port = normalizePort(process.env.port || 3000)
 let force = false
-//if(process.env.NODE_ENV == 'development') force = true
+if(process.env.NODE_ENV == 'development') force = true 
 
 // ATENCAO com force: true, ele dropa as tabelas e refaz elas !!! SEMPRE !!!!
 db.sequelize.sync({ force: force }).then(() => {

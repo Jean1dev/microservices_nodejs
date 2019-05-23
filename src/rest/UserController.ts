@@ -4,6 +4,7 @@ import { Response, NextFunction} from 'express';
 
 export class UserController extends GeneralController {
     
+    //url /rest/user
     constructor(){
         super()
         this.init()

@@ -2,6 +2,7 @@ import { ModelsInterface } from './../interface/ModelsInterface';
 import * as Sequelize from 'sequelize'
 import { genSaltSync, hashSync, compareSync } from 'bcryptjs'
 import { BaseModelInterface } from '../interface/BaseModelInterface';
+import { store } from '../persistence/DrivePersistence';
 
 export interface UserAttributes {
     id?: number
@@ -16,6 +17,7 @@ export interface UserAttributes {
     operador?: boolean
     cpf?: number
     cdempresa?: number
+    drive_name?: string
     createdAt?: string
     updatedAt?: string
 }
@@ -86,13 +88,20 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
             type: DataTypes.DECIMAL,
             allowNull: false,
             defaultValue: 0
+        },
+        drive_name: {
+            type: DataTypes.STRING(255),
+            allowNull: true
         }
     }, {
             tableName: 'users',
             hooks: { // FAMOSAS TRIGGER DO STOPCELSO
                 beforeCreate: (user: UserInstance, option: Sequelize.CreateOptions): void => {
                     const salt = genSaltSync()
+                    const drive = `drive_${user.email}`
                     user.password = hashSync(user.password, salt)
+                    user.drive_name = drive    
+                    store({ title: drive})
                 },
                 beforeUpdate: (user: UserInstance, option: Sequelize.CreateOptions): void => {
                     if (user.changed('password')) {

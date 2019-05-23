@@ -13,6 +13,7 @@ const userTypes = `
         cpf: Int
         description: String
         cdempresa: Int
+        drive_name: String
         createdAt: String!
         updatedAt: String!
         services(first: Int, offset: Int): [ Service! ]!
