@@ -8,6 +8,7 @@ import  PagSeguroController  from './rest/PagSeguroController';
 import  TempController  from './rest/TempController';
 import SMSController from './rest/SMSController'
 import * as path from 'path'
+import  DriveController  from './rest/DriveController';
 
 const router = express.Router()
 // URI/ON    -> RETORNA SE A API ESTA ONLINE
@@ -19,6 +20,7 @@ router.use(express.static(__dirname + '/public'))
 router.use('/app', (req, res) => {
     res.sendFile('app.html', { root: path.join(__dirname, './public/app')})
 })
+router.use('/rest/drive', DriveController)
 router.use('/rest/sms', SMSController)
 router.use('/rest/whats', WhatsAppController)
 router.use('/rest/empresa', EmpresaController)

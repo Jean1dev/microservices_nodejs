@@ -10,6 +10,8 @@ import { isAuthorized } from '../middlewares/extract-jwt.middleware';
 import { store, getAll } from '../persistence/NumberPersistence';
 import * as path from 'path'
 
+//ESSA CLASSE LIGA COM VARIAS OPERACOES Q EU NAO TIVE A CAPACIDADE DE SEPARAR
+// EM OUTRAS
 export class TempController extends GeneralController {
 
     constructor(){

@@ -8,6 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "Launch NODE",
+            "env": { "NODE_ENV":"development",
+                    "JWT_SECRET":"3y8raz35"},
             "program": "${workspaceFolder}/dist/index.js"
         },
         {
