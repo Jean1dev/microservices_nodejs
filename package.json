@@ -48,6 +48,7 @@
     "@types/mime": "^2.0.0",
     "@types/request": "^2.47.1",
     "apollo-upload-server": "^7.0.0",
+    "axios": "^0.19.0",
     "bcryptjs": "2.4.3",
     "body-parser": "^1.18.3",
     "compression": "1.7.1",

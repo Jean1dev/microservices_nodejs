@@ -4,8 +4,6 @@ import { NextFunction } from "connect";
 import { store } from "../persistence/NumberPersistence";
 import { authAPiWha, twilioAccountSid, twilioToken } from "../utils/Constantes";
 
-const SchemaNumber = require("../models/NumberStatisticModel")
-const mongo = require("../config/db.nosql")
 const twilio = null//require('twilio')
 const request = require("request")
 //const accountSid = ''

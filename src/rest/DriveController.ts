@@ -5,7 +5,6 @@ import { Response, NextFunction} from 'express';
 import { isAuthorized } from "../middlewares/extract-jwt.middleware";
 import * as formidable from 'formidable'
 import * as fs from 'fs'
-import { bind } from 'bluebird';
 /**
  * https://stackabuse.com/get-query-strings-and-parameters-in-express-js/
  */

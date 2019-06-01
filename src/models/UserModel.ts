@@ -2,7 +2,10 @@ import { ModelsInterface } from './../interface/ModelsInterface';
 import * as Sequelize from 'sequelize'
 import { genSaltSync, hashSync, compareSync } from 'bcryptjs'
 import { BaseModelInterface } from '../interface/BaseModelInterface';
-import { store } from '../persistence/DrivePersistence';
+import Axios from 'axios'
+import { handleError } from '../utils/utils';
+
+const config = require('../config/config.json')
 
 export interface UserAttributes {
     id?: number
@@ -101,7 +104,9 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
                     const drive = `drive_${user.email}`
                     user.password = hashSync(user.password, salt)
                     user.drive_name = drive    
-                    store({ title: drive})
+                    //store({ title: drive})
+                    Axios.post(`${config.module_drive.url}/boxes`, { title: drive }).catch(handleError)
+                    
                 },
                 beforeUpdate: (user: UserInstance, option: Sequelize.CreateOptions): void => {
                     if (user.changed('password')) {

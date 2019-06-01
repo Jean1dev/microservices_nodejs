@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const multiparty = require('connect-multiparty')
 const mongo = require('mongoose')
+const http = require('request')
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended:true}));
@@ -30,3 +31,10 @@ console.log('Servidor HTTP esta escutando na porta ' + port);
 app.get('/', function(req, res){
 	res.send({msg:'funfo'});
 });
+
+/*
+http.post(`http://localhost:7070/boxes`, {title: "teste"}, (err, success) => {
+	if(err) console.log("erro", err)
+	if(success) console.log("sucesso", success)
+})
+ */

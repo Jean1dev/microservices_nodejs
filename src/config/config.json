@@ -29,6 +29,9 @@
       "port": 3306,
       "dialect": "mysql",
       "logging": false
+    },
+    "module_drive": {
+      "url": "http://localhost:7070"
     }
   }
   
