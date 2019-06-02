@@ -7,6 +7,7 @@ const root = httpProxy(base_url)
 const empresa = httpProxy(`${base_url}/rest/empresa`)
 const user = httpProxy(`${base_url}/rest/user`)
 const graphql = httpProxy(`${base_url}/graphql`)
+const site = httpProxy(`http://localhost:3002/app`)
 
 //*************************************************************** */
 router.get('/graphql', (req, res, next) => {
@@ -24,6 +25,11 @@ router.delete('/graphql', (req, res, next) => {
 
 router.get('/on', (req, res, next) => {
     root(req, res, next)
+})
+
+//*************************************************************** */
+router.get('/app', (req, res, next) => {
+    site(req, res, next)
 })
 
 module.exports = router
