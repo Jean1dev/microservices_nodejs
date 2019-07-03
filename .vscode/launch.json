@@ -12,6 +12,16 @@
                     "JWT_SECRET":"3y8raz35"},
             "program": "${workspaceFolder}/dist/index.js"
         },
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "API NOTIFY",
+            "env": { "NODE_ENV":"development",
+                    "JWT_SECRET":"3y8raz35"},
+            "program": "${workspaceFolder}/module-notify/src/index.js"
+        },
+
         {
             "type": "node",
             "request": "launch",
