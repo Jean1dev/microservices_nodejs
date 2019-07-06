@@ -7,6 +7,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "test Script",
+            "program": "${workspaceFolder}/module-integracao/tests/test.csv.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Launch NODE",
             "env": { "NODE_ENV":"development",
                     "JWT_SECRET":"3y8raz35"},
