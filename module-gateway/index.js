@@ -6,6 +6,7 @@ const app = express()
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const helmet = require('helmet');
+const port = 8080
 
 app.use(require('./routes')) 
 app.use(logger('dev'));
@@ -15,5 +16,5 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 var server = http.createServer(app);
-server.listen(3001);
-console.log(`on na porta`, 3001)
+server.listen(port);
+console.log(`on na porta`, port)

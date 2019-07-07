@@ -19,8 +19,8 @@ const run = async () => {
     WAJS.onLogin(async () => {
         // Here, we are now loged and able to send messages
         console.log('will send message')
-        await WAJS.sendMessage({ target: 'Jag', message: 'testing...' })
-        //await WAJS.sendMessage({ target: 'Fabio2', message: 'testing...' })
+        //await WAJS.sendMessage({ target: 'Jag', message: 'testing...' })
+        await WAJS.sendMessage({ target: 'Fabio2', message: 'testing...' })
         //await WAJS.sendMessage({ target: 'Teda', message: 'testing...' })
         //await WAJS.sendMessage({ target: 'Derick', message: 'testing...' })
 
@@ -43,7 +43,7 @@ const run = async () => {
     await WAJS.initiate()
     // Also takes a while. This navigates and grabs the QRCode.
     // You can fetch the image file from ./src/temp/qrcode.png after .getQrCode is resolved
-    await WAJS.getQrCode({})
+    await WAJS.getQrCode({openImage: true})
     // getQrCode also returns the base64 string containing the QRCode if you want to use it:
     // const QRCodeImageString = await WAJS.getQrCode()
     

@@ -8,6 +8,9 @@ const Mailing = new mongoose.Schema({
     path: {
         type: String,
         required: true
+    },
+    status: {
+        type: String
     }
     
 }, {

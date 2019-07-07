@@ -21,15 +21,17 @@ app.use(function(req, res, next){
 	next();
 });
 
-const port = 8080
-
+const port = 3004
+const run = () => {
+	
+}
 WAJS.initiate().then(async () => {
 	await WAJS.getQrCode({})
 	app.listen(port)
 	console.log('Servidor HTTP esta escutando na porta ' + port);
 })
 
-app.post('/', function(req, res){
+app.post('/send', function(req, res){
 	try {
 		WAJS.sendMessage({ target: req.body.contato, message: 'é drone rogerinho' })	
 	} catch (error) {

@@ -1,7 +1,7 @@
 const express = require(`express`)
 const db = require('./config/db.config.js')
 const cors = require('cors')
-const port = 7071
+const port = 3002
 const app = express()
 
 const server = require('http').Server(app)

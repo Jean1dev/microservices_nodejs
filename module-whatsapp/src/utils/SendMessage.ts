@@ -48,7 +48,7 @@ class SendMessage {
      * 6. TODO: confirm message was sent (appears on screen and has 1 or 2 check marks)
      */
     public async send (): Promise<void> {
-        await delay(3000)
+        await delay(20000)
         //await pressClearSearch(this.page).catch((error) => { throw error })
         //await delay(PACE_TIMING)
         console.log('* 1. Inject target into conversations search bar')

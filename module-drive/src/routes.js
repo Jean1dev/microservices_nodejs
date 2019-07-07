@@ -1,6 +1,6 @@
 const routes = require('express').Router()
 const multer = require('multer')
-const multerConfig = require('./config/multer')
+const multerConfig = require('api-jaguar-commons/lib/multer.config')
 
 const _box = require('./controllers/boxController')
 const _files = require('./controllers/fileController')

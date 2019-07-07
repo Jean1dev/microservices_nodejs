@@ -1,10 +1,5 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const multiparty = require('connect-multiparty')
-const mongo = require('mongoose')
-const http = require('request')
 
-const app = express()
+/*const app = express()
 app.use(bodyParser.urlencoded({ extended:true}));
 app.use(bodyParser.json());
 app.use(multiparty()); 
@@ -32,9 +27,27 @@ app.get('/', function(req, res){
 	res.send({msg:'funfo'});
 });
 
+
+const express = require('express')
+const bodyParser = require('body-parser')
+const multiparty = require('connect-multiparty')
+const mongo = require('mongoose')
+
+
+
+
+*/
+
+const http = require('request')
+const axios = require(`axios`)
+axios.post(`http://localhost:3005/send`, { 
+	number: `contato.telefone`,
+	message: `contato.mensagem`
+}).then(res => console.log(res))
+
 /*
-http.post(`http://localhost:7070/boxes`, {title: "teste"}, (err, success) => {
-	if(err) console.log("erro", err)
-	if(success) console.log("sucesso", success)
+http.post(`http://localhost:3005/send`, {title: "teste"}, (err, success) => {
+	if(err) console.log("erro")
+	if(success) console.log("sucesso")
 })
  */
