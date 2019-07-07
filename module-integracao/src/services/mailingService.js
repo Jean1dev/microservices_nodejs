@@ -1,5 +1,4 @@
 const csv = require('csvtojson')
-//const axios = require(`./axiosService`)
 const axios = require(`axios`)
 const Mailing = require('../models/mailing')
 const basePath = `${__dirname}/../../tmp`
@@ -20,7 +19,7 @@ class MailingService {
             this.atualizarStatusMailing(element.id)
             let contatoInfo = await this.getInfoFromCsv(element.path) 
             contatoInfo.forEach(async contato => {
-                let result = await axios.post('http://localhost:3005/send', { 
+                await axios.post('http://localhost:3005/send', { 
                     number: contato.TELEFONE,
                     message: contato.MENSAGEM
                 })

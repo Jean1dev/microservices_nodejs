@@ -18,5 +18,5 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp')))
 app.use(require(`./routes`))
 
 server.listen(port, () => {
-    console.log(`rodando na porta ${port}`)
+    console.log(`module-drive: ${port}`)
 })

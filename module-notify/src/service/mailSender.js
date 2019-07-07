@@ -4,7 +4,7 @@ const config = require(`../../.env`)
 module.exports.sendMail = (content, callback) => {
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
-        port: 25,
+        port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
             user: config.email,
@@ -16,11 +16,11 @@ module.exports.sendMail = (content, callback) => {
     const mailOptions = {
         from: config.email,
         to: content.to,
-        subject: 'E-mail enviado usando Node!',
+        subject: 'Notificacao Rocket-Envios!',
         text: content.content
     }
 
-    transporter.sendMail(mailOptions, (error, info) => {
+    transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             callback(error)
         } else {

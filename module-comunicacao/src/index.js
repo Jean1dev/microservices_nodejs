@@ -10,5 +10,5 @@ app.use(cors())
 app.use(require(`./routes`))
 
 server.listen(port, () => {
-    console.log(`rodando na porta ${port}`)
+    console.log(`module-comunicacao: ${port}`)
 })

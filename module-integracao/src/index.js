@@ -15,5 +15,5 @@ app.use(morgan('dev'))
 app.use(require(`./routes`))
 
 server.listen(port, () => {
-    console.log(`rodando na porta ${port}`)
+    console.log(`module-integracao: ${port}`)
 })

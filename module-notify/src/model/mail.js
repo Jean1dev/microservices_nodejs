@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const Mail = new mongoose.Schema({
     title: {
         type: String,
-        required: true
     },
 
     to: {
@@ -14,6 +13,10 @@ const Mail = new mongoose.Schema({
     content: {
         type: String,
         required: true
+    },
+
+    detalhes_tecnicos: {
+        type: Object
     }
     
 }, {

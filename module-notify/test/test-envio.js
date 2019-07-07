@@ -4,7 +4,7 @@ const config = require(`../.env`)
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 25,
+    port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
         user: config.email,

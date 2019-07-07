@@ -28,7 +28,7 @@ const run = () => {
 WAJS.initiate().then(async () => {
 	await WAJS.getQrCode({})
 	app.listen(port)
-	console.log('Servidor HTTP esta escutando na porta ' + port);
+	console.log('module-whatsapp : ' + port);
 })
 
 app.post('/send', function(req, res){

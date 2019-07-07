@@ -1,5 +1,5 @@
 const express = require(`express`)
-const db = require('./config/db.config.js')
+const db = require('./config/db.js')
 const cors = require('cors')
 const port = 3002
 const app = express()
@@ -13,5 +13,5 @@ app.use(express.urlencoded({ extended: true}))
 app.use(require(`./routes`))
 
 server.listen(port, () => {
-    console.log(`rodando na porta ${port}`)
+    console.log(`module-notify: ${port}`)
 })
