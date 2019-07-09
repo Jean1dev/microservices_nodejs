@@ -38,5 +38,15 @@
                     "JWT_SECRET":"3y8raz35"},
             "program": "${workspaceFolder}/module-integracao/src/index.js"
         },
+
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "API COMUNICACAO",
+            "env": { "NODE_ENV":"development",
+                    "JWT_SECRET":"3y8raz35"},
+            "program": "${workspaceFolder}/module-comunicacao/src/index.js"
+        },
     ]
 }

@@ -12,8 +12,10 @@ const site = httpProxy(`http://localhost:3001/app`)
 const notify = httpProxy(`${base_url}:3002`)
 const integracao = httpProxy(`${base_url}:3003`)
 //const whatsapp = httpProxy(`${base_url}:3004`)
-//comunicacao 3005
+const comunicacao = httpProxy(`${base_url}:3005`)
 
+//*********************************** API COMUNICACAO */
+router.post(`/api-wha-token-update`,(req, res, next) => comunicacao(req, res, next))
 
 //*********************************** API INTEGRACAO */
 router.post(`/integracao`, (req, res, next) => integracao(req, res, next))

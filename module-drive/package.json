@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
-    "dev": "nodemon node src/index.js"
+    "dev": "nodemon node src/index.js",
+    "production": "URL_MONGO=mongodb+srv://default:default@jaguardb-e7nlh.mongodb.net/test?retryWrites=true node src/index.js"
   },
   "author": "jean",
   "license": "ISC",
