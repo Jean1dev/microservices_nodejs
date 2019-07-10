@@ -5,6 +5,7 @@ npm i
 APP_NAME="GATEWAY"
 pm2 start npm --name $APP_NAME -- run production
 
+echo "***********************************************************************"
 cd ..
 echo "iniciando comunicacao"
 cd module-comunicacao
@@ -13,6 +14,7 @@ touch .env
 APP_NAME="comunicacao"
 pm2 start npm --name $APP_NAME -- run production
 
+echo "***********************************************************************"
 cd ..
 echo "iniciando notify"
 cd module-notify
@@ -26,9 +28,13 @@ module.exports = {
 APP_NAME="notify"
 pm2 start npm --name $APP_NAME -- run production
 
+echo "***********************************************************************"
 cd ..
 echo "iniciando integracao"
 cd module-integracao
 npm i
 APP_NAME="integracao"
 pm2 start npm --name $APP_NAME -- run production
+
+echo "***********************************************************************"
+echo "                           FIM                                         "

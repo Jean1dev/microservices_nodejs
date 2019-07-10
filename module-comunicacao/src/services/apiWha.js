@@ -16,6 +16,7 @@ class ApiWha {
         }
         request(options, (error, response, body) => {
             if (error) throw new Error(error)
+            console.log(response.body)
             return res.send(response.body)
         })
     }

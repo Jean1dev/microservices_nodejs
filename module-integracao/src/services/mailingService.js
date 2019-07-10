@@ -1,6 +1,7 @@
 const csv = require('csvtojson')
 const axios = require(`axios`)
 const Mailing = require('../models/mailing')
+const defaultObjectMongoose = require('../models/default')
 const basePath = `${__dirname}/../../tmp`
 
 /** O FORMATO DO CSV DEVE SER   CONTATO; TELEFONE; MENSAGEM; ........ */
@@ -19,10 +20,11 @@ class MailingService {
             this.atualizarStatusMailing(element.id)
             let contatoInfo = await this.getInfoFromCsv(element.path) 
             contatoInfo.forEach(async contato => {
-                await axios.post('http://localhost:3005/send', { 
+                let result = await axios.post('http://localhost:3005/send', { 
                     number: contato.TELEFONE,
                     message: contato.MENSAGEM
                 })
+                this.saveDefaultObject(object)
             })
         })
     }
@@ -36,6 +38,10 @@ class MailingService {
                 console.log("err")
             })
         })
+    }
+
+    saveDefaultObject(object) {
+        defaultObjectMongoose.create(object)
     }
 }
 
