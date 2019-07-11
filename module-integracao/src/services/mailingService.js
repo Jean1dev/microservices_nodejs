@@ -1,7 +1,7 @@
 const csv = require('csvtojson')
 const axios = require(`axios`)
 const Mailing = require('../models/mailing')
-const defaultObjectMongoose = require('../models/default')
+const infoApiMongooseModel = require('../models/infoResponseApiComunicacao')
 const basePath = `${__dirname}/../../tmp`
 
 /** O FORMATO DO CSV DEVE SER   CONTATO; TELEFONE; MENSAGEM; ........ */
@@ -24,7 +24,11 @@ class MailingService {
                     number: contato.TELEFONE,
                     message: contato.MENSAGEM
                 })
-                this.saveDefaultObject(object)
+                this.saveDefaultObject({
+                    detalhes: result.data || { },
+                    mensagem_enviada: contato.MENSAGEM,
+                    telefone_enviado: contato.TELEFONE
+                })
             })
         })
     }
@@ -41,7 +45,7 @@ class MailingService {
     }
 
     saveDefaultObject(object) {
-        defaultObjectMongoose.create(object)
+        infoApiMongooseModel.create(object)
     }
 }
 

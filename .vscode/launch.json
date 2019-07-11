@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "test Script",
-            "program": "${workspaceFolder}/module-integracao/tests/test.csv.js"
+            "program": "${workspaceFolder}/api-jaguar-commons/lib/healthAlive.js"
         },
         {
             "type": "node",

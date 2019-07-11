@@ -1,6 +1,7 @@
 const express = require('express')
 const httpProxy = require('express-http-proxy')
 const router = express.Router()
+const healthAlive = require('api-jaguar-commons/lib/healthAlive').checarServicos
 const base_url = `http://localhost`
 
 
@@ -13,6 +14,12 @@ const notify = httpProxy(`${base_url}:3002`)
 const integracao = httpProxy(`${base_url}:3003`)
 //const whatsapp = httpProxy(`${base_url}:3004`)
 const comunicacao = httpProxy(`${base_url}:3005`)
+// drive 3006
+
+
+//**************************************************************
+router.get('/status', (req, res, next) => healthAlive(req, res, next))
+//**************************************************************
 
 //*********************************** API COMUNICACAO */
 router.post(`/api-wha-token-update`,(req, res, next) => comunicacao(req, res, next))
