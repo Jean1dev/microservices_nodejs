@@ -22,12 +22,15 @@ router.get('/status', (req, res, next) => healthAlive(req, res, next))
 //**************************************************************
 
 //*********************************** API COMUNICACAO */
-router.post(`/api-wha-token-update`,(req, res, next) => comunicacao(req, res, next))
+router.post(`/api-wha-token-update`, (req, res, next) => comunicacao(req, res, next))
+router.get('/token', (req, res, next) => comunicacao(req, res, next))
+router.get('/credit', (req, res, next) => comunicacao(req, res, next))
 
 //*********************************** API INTEGRACAO */
 router.post(`/integracao`, (req, res, next) => integracao(req, res, next))
 router.post(`/iniciar-fila-existentes`, (req, res, next) => integracao(req, res, next))
 router.post(`/iniciar-fila-desconhecidos`, (req, res, next) => integracao(req, res, next))
+router.get(`/info-integracao`, (req, res, next) => integracao(req, res, next))
 
 //************************************ API NOTIFY* */
 router.post(`/send-mail`, (req, res, next) => notify(req, res, next))

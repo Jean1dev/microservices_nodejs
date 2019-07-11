@@ -7,6 +7,7 @@ const _mailing = require('./controllers/mailingController')
 routes.post('/integracao', multer(multerConfig).single('file'), _mailing.store)
 routes.post('/iniciar-fila-existentes', _mailing.integrarApiContatoExistente)
 routes.post('/iniciar-fila-desconhecidos', _mailing.integrarApiContatoInexistente)
+routes.get('/info-integracao', _mailing.getLast20Messages)
 routes.get('/on', healthAlive)
 
 module.exports = routes

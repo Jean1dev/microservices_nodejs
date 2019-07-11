@@ -5,6 +5,10 @@ module.exports.alterarTokenApiWha = (req, res) => {
     return res.send(criarEnvFile(req.body.token))
 }
 
+module.exports.getToken = (req, res) => {
+    res.json(require('../../.env').authAPiWha)
+}
+
 function criarEnvFile(token) {
     let path = `${__dirname}/../../.env`
     let modelo = `// RENOMEAR PARA .env e colocar os valores

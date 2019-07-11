@@ -1,6 +1,7 @@
 const Mailing = require(`../models/mailing`)
 const service = require(`../services/mailingService`)
 const apiService = require(`../services/apiService`)
+const infoResponseAPI = require('../models/infoResponseApiComunicacao')
 
 class MailingController {
 
@@ -25,6 +26,12 @@ class MailingController {
         apiService.notificarInicioIntegracao()
         const filaIntegracao = await Mailing.find({ status: `AGUARDANDO`})
         service.integrarApiWhatsContatosInexistentes(filaIntegracao)
+    }
+
+    async getLast20Messages(req, res) {
+        return res.json(await infoResponseAPI.find()
+        .sort('createdAt')
+        .limit(20))
     }
 }
 

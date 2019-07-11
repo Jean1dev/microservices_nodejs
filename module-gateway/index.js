@@ -6,8 +6,10 @@ const app = express()
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const helmet = require('helmet');
+const cors = require('cors')
 const port = 8080
 
+app.use(cors())
 app.use(require('./routes')) 
 app.use(logger('dev'));
 app.use(helmet());
