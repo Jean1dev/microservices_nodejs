@@ -11,7 +11,7 @@
   "author": "jean",
   "license": "ISC",
   "dependencies": {
-    "api-jaguar-commons": "^1.0.5",
+    "api-jaguar-commons": "latest",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
