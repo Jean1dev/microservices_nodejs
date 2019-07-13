@@ -1,0 +1,18 @@
+image: node:latest
+
+stages:
+  - install
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: install
+  paths:
+    - api-jaguar-commons/
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
