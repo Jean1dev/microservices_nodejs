@@ -5,7 +5,7 @@ stages:
 
 cache:
   paths:
-    - node_modules/
+    - api-jaguar-commons/node_modules/
 
 install_dependencies:
   stage: build
@@ -13,4 +13,4 @@ install_dependencies:
     - api-jaguar-commons/npm install
   artifacts:
     paths:
-      - node_modules/
+      - api-jaguar-commons/node_modules/
