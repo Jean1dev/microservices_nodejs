@@ -15,8 +15,9 @@ function criarEnvFile(token) {
                 module.exports = {
                      authAPiWha: '${token}',
                     }`
-
+    console.log(modelo)
     try {
+        fs.unlinkSync(path)
         fs.writeFileSync(path, modelo)
         return { status: `OK` }
     } catch (error) {
