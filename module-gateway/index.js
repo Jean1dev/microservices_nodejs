@@ -12,6 +12,7 @@ const cors = require('cors')
 const port = process.env.PORT || 8080
 const production = process.env.PROD || false
 
+app.use(cors())
 app.use(require('./routes'))
 app.use(logger('dev'));
 app.use(helmet());
@@ -53,7 +54,6 @@ if (production) {
     });
 
 } else {
-    app.use(cors())
     var server = http.createServer(app);
     server.listen(port);
     console.log(`module-gateway`, port)
