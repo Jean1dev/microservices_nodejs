@@ -30,7 +30,7 @@ class MailingController {
 
     async getLast20Messages(req, res) {
         return res.json(await infoResponseAPI.find()
-        .sort('createdAt')
+        .sort({ createdAt : -1 })
         .limit(20))
     }
 }

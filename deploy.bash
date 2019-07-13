@@ -1,4 +1,6 @@
 echo "iniciando"
+
+pm2 delete all
 echo "iniciando gateway"
 cd module-gateway
 npm i

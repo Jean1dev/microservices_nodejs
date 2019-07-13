@@ -1,4 +1,6 @@
 const fs = require('fs')
+const path = `${__dirname}/../../.env`
+const utils = require('./utils')
 
 module.exports.alterarTokenApiWha = (req, res) => {
     if (!req.body.token) return res.send(`parametro token nao informado`)
@@ -6,16 +8,15 @@ module.exports.alterarTokenApiWha = (req, res) => {
 }
 
 module.exports.getToken = (req, res) => {
-    res.json(require('../../.env').authAPiWha)
+    res.json(utils.requireUncached('../../.env').authAPiWha)
 }
 
 function criarEnvFile(token) {
-    let path = `${__dirname}/../../.env`
     let modelo = `// RENOMEAR PARA .env e colocar os valores
                 module.exports = {
                      authAPiWha: '${token}',
                     }`
-    console.log(modelo)
+    
     try {
         fs.unlinkSync(path)
         fs.writeFileSync(path, modelo)
