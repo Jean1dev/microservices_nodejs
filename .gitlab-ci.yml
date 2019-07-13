@@ -1,18 +1,16 @@
 image: node:latest
 
 stages:
-  - install
+  - build
 
 cache:
   paths:
     - node_modules/
 
 install_dependencies:
-  stage: install
-  paths:
-    - api-jaguar-commons/
+  stage: build
   script:
-    - npm install
+    - api-jaguar-commons/npm install
   artifacts:
     paths:
       - node_modules/
