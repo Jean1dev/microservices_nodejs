@@ -17,12 +17,12 @@ const integracao = httpProxy(`${base_url}:3003`)
 const comunicacao = httpProxy(`${base_url}:3005`)
 // drive 3006
 
-const ssl_url = '/.well-known/acme-challenge/sBgKdyy_Ksr10Yt6m575yVhBc8YXQkXGEeLzAiQ7zSE'
+const ssl_url = '/.well-known/acme-challenge/*'
 router.use(express.static(__dirname, { dotfiles: 'allow' }));
-const ssl = '/.well-known/acme-challenge/sBgKdyy_Ksr10Yt6m575yVhBc8YXQkXGEeLzAiQ7zSE'
+
 router.get(ssl_url,
     (req, res) => {
-        res.send('sBgKdyy_Ksr10Yt6m575yVhBc8YXQkXGEeLzAiQ7zSE.5oPFSBTUeOyg1wMu2My7Km47ZF4HiLJEZbDVRW-o19s')
+        res.send('YKaIVJ8VqMZQCSK9Jp_ahH1DHtLEpgRWtpYFK5pPysA.5oPFSBTUeOyg1wMu2My7Km47ZF4HiLJEZbDVRW-o19s')
     })
 //**************************************************************
 router.get('/status', (req, res, next) => healthAlive(req, res, next))
