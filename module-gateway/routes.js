@@ -1,5 +1,6 @@
 const express = require('express')
 const httpProxy = require('express-http-proxy')
+const path = require('path')
 const router = express.Router()
 const healthAlive = require('api-jaguar-commons/lib/healthAlive').checarServicos
 const base_url = `http://localhost`
@@ -16,7 +17,13 @@ const integracao = httpProxy(`${base_url}:3003`)
 const comunicacao = httpProxy(`${base_url}:3005`)
 // drive 3006
 
-
+const ssl_url = '/.well-known/acme-challenge/cS9vh9913ewfeS-bQY_lpC1EjNQesx_hXm763lAmNBU'
+router.use(express.static(__dirname, { dotfiles: 'allow' }));
+const ssl = '/.well-known/acme-challenge/cS9vh9913ewfeS-bQY_lpC1EjNQesx_hXm763lAmNBU'
+router.get(ssl_url,
+    (req, res) => {
+        res.download('cS9vh9913ewfeS-bQY_lpC1EjNQesx_hXm763lAmNBU.5oPFSBTUeOyg1wMu2My7Km47ZF4HiLJEZbDVRW-o19s')
+    })
 //**************************************************************
 router.get('/status', (req, res, next) => healthAlive(req, res, next))
 //**************************************************************
