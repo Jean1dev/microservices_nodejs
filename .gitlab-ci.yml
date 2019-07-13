@@ -3,10 +3,6 @@ image: node:latest
 stages:
   - build
 
-cache:
-  paths:
-    - api-jaguar-commons/node_modules/
-
 install_dependencies:
   stage: build
   script:
