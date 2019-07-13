@@ -43,13 +43,13 @@ if (production) {
      Donating to EFF:                    https://eff.org/donate-le
      */
     const privateKey = fs.readFileSync('/etc/letsencrypt/live/rocketenvios.tk/privkey.pem', 'utf8');
-    const certificate = fs.readFileSync('/etc/letsencrypt/live/rocketenvios.tk/cert.pem', 'utf8');
-    const ca = fs.readFileSync('/etc/letsencrypt/live/rocketenvios.tk/chain.pem', 'utf8');
+    const certificate = fs.readFileSync('/etc/letsencrypt/live/rocketenvios.tk/fullchain.pem', 'utf8');
+    //const ca = fs.readFileSync('/etc/letsencrypt/live/rocketenvios.tk/chain.pem', 'utf8');
 
     const credentials = {
         key: privateKey,
-        cert: certificate,
-        ca: ca
+        cert: certificate
+        //ca: ca
     };
 
     const httpsServer = https.createServer(credentials, app);
