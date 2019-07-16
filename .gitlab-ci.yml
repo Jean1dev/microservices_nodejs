@@ -1,7 +1,12 @@
 image: node:latest
 
 stages:
+  - test
   - build
+
+test_bash:
+  stage: test
+  script: ./teste.bash
 
 install_dependencies:
   stage: build
