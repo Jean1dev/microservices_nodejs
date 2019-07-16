@@ -6,7 +6,7 @@ stages:
 
 test_bash:
   stage: test
-  script: chmod a+x teste./bash && ./teste.bash
+  script: chmod a+x teste.bash && ./teste.bash
 
 install_dependencies:
   stage: build
