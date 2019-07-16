@@ -1,17 +1,15 @@
 image: node:latest
 
 stages:
-  - test
   - build
-
-test_bash:
-  stage: test
-  script: chmod a+x teste.bash && ./teste.bash
 
 install_dependencies:
   stage: build
   script:
-    - api-jaguar-commons/npm install
+    - chmod a+x build.sh && ./build.sh
   artifacts:
     paths:
-      - api-jaguar-commons/node_modules/
+      - module-comunicacao/node_modules/
+      - module-integracao/node_modules/
+      - module-notify/node_modules/
+      - module-gateway/node_modules/
