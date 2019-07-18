@@ -1,0 +1,9 @@
+{
+    "maestro": "http://localhost:3000/",
+    "notify": "http://localhost:3002/notify",
+    "integracao": "http://localhost:3003/integracao",
+    "whatsapp": "http://localhost:3004/whats",
+    "comunicacao": "http://localhost:3005/comunicacao",
+    "drive": "http://localhost:3006/drive",
+    "chat": "http://localhost:3007/chat"    
+}

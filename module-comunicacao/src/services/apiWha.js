@@ -38,6 +38,23 @@ class ApiWha {
             return res.send(response.body)
         })
     }
+
+    pullMessages(req, res) {
+        let token = utils.requireUncached('../../.env').authAPiWha
+        var options = {
+            method: 'GET',
+            url: 'https://panel.apiwha.com/get_messages.php',
+            qs:
+            {
+                apikey: token
+            }
+        }
+        
+        request(options, (error, response, body) => {
+            if (error) throw new Error(error)
+            return res.send(response.body)
+        })
+    }
 }
 
 module.exports = new ApiWha()

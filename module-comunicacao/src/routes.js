@@ -3,11 +3,13 @@ const _apiWha = require('./services/apiWha')
 const _token = require('./services/gerenciadorTokens')
 const healthAlive = require('api-jaguar-commons/lib/healthAlive').healthAlive
 
-routes.post(`/send`, _apiWha.sendWhats)
-routes.get(`/credit`, _apiWha.getCredits)
+routes.post(`/comunicacao/send`, _apiWha.sendWhats)
+routes.get(`/comunicacao/credit`, _apiWha.getCredits)
+routes.get('/comunicacao/pull-messages', _apiWha.pullMessages)
 
-routes.post(`/api-wha-token-update`, _token.alterarTokenApiWha)
+routes.post(`/comunicacao/api-wha-token-update`, _token.alterarTokenApiWha)
+routes.get('/comunicacao/token', _token.getToken)
+
 routes.get('/on', healthAlive)
-routes.get('/token', _token.getToken)
 
 module.exports = routes

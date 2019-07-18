@@ -49,5 +49,12 @@ module.exports.checarServicos = async (req, res) => {
         jsonRetorno.drive = statusOff
     }
 
+    try {
+        retorno = await axios.get(`${baseUrl}:3007/on`)
+        jsonRetorno.chat = retorno.data
+    } catch (error) {
+        jsonRetorno.chat = statusOff
+    }
+
     res.json(jsonRetorno)
 }

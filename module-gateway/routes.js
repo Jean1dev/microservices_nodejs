@@ -1,21 +1,21 @@
 const express = require('express')
 const httpProxy = require('express-http-proxy')
-const path = require('path')
 const router = express.Router()
 const healthAlive = require('api-jaguar-commons/lib/healthAlive').checarServicos
 const base_url = `http://localhost`
-
+const JAGUAR_APIS_ROUTES = require('api-jaguar-commons/config/routes.json')
 
 const root = httpProxy(base_url)
 //const empresa = httpProxy(`${base_url}:3000/rest/empresa`)
 //const user = httpProxy(`${base_url}:3000/rest/user`)
-const graphql = httpProxy(`${base_url}:3000/graphql`)
+const graphql = httpProxy(`${JAGUAR_APIS_ROUTES.maestro}/graphql`)
 const site = httpProxy(`http://localhost:3001/app`)
-const notify = httpProxy(`${base_url}:3002`)
-const integracao = httpProxy(`${base_url}:3003`)
+const notify = httpProxy(JAGUAR_APIS_ROUTES.notify)
+const integracao = httpProxy(JAGUAR_APIS_ROUTES.integracao)
 //const whatsapp = httpProxy(`${base_url}:3004`)
-const comunicacao = httpProxy(`${base_url}:3005`)
+const comunicacao = httpProxy(JAGUAR_APIS_ROUTES.comunicacao)
 // drive 3006
+// chat 3007
 
 const ssl_url = '/.well-known/acme-challenge/*'
 router.use(express.static(__dirname, { dotfiles: 'allow' }));
@@ -29,18 +29,15 @@ router.get('/status', (req, res, next) => healthAlive(req, res, next))
 //**************************************************************
 
 //*********************************** API COMUNICACAO */
-router.post(`/api-wha-token-update`, (req, res, next) => comunicacao(req, res, next))
-router.get('/token', (req, res, next) => comunicacao(req, res, next))
-router.get('/credit', (req, res, next) => comunicacao(req, res, next))
+router.post(`/comunicacao/*`, (req, res, next) => comunicacao(req, res, next))
+router.get('/comunicacao/*', (req, res, next) => comunicacao(req, res, next))
 
 //*********************************** API INTEGRACAO */
-router.post(`/integracao`, (req, res, next) => integracao(req, res, next))
-router.post(`/iniciar-fila-existentes`, (req, res, next) => integracao(req, res, next))
-router.post(`/iniciar-fila-desconhecidos`, (req, res, next) => integracao(req, res, next))
-router.get(`/info-integracao`, (req, res, next) => integracao(req, res, next))
+router.post(`/integracao/*`, (req, res, next) => integracao(req, res, next))
+router.get(`/integracao/*`, (req, res, next) => integracao(req, res, next))
 
 //************************************ API NOTIFY* */
-router.post(`/send-mail`, (req, res, next) => notify(req, res, next))
+router.post(`/notify/*`, (req, res, next) => notify(req, res, next))
 
 //*************************************API MAESTRO  ******* */
 router.get('/graphql', (req, res, next) => graphql(req, res, next))
