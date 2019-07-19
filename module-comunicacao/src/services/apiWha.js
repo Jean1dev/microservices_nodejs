@@ -55,6 +55,11 @@ class ApiWha {
             return res.send(response.body)
         })
     }
+
+    webHooks(req, res) {
+        console.log(req.body.data)
+        res.json( {autoreply: "resposta automagica"} )
+    }
 }
 
 module.exports = new ApiWha()

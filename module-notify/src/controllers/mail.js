@@ -2,7 +2,7 @@ const mail = require(`../model/mail`)
 const service = require('../service/mailSender')
 
 module.exports.enviar = (req, res) => {
-    console.log(req.body)
+    
     const content = {
         to: req.body.to,
         content: req.body.content

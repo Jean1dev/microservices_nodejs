@@ -15,3 +15,5 @@ app.use(require(`./routes`))
 server.listen(port, () => {
     console.log(`module-notify: ${port}`)
 })
+
+module.exports = app

@@ -4,6 +4,8 @@ const _token = require('./services/gerenciadorTokens')
 const healthAlive = require('api-jaguar-commons/lib/healthAlive').healthAlive
 
 routes.post(`/comunicacao/send`, _apiWha.sendWhats)
+routes.post(`/comunicacao/webhooks`, _apiWha.webHooks)
+
 routes.get(`/comunicacao/credit`, _apiWha.getCredits)
 routes.get('/comunicacao/pull-messages', _apiWha.pullMessages)
 

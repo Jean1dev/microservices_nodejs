@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha test/*.js",
     "start": "nodemon src/index.js",
     "production": "URL_MONGO=mongodb+srv://default:default@jaguardb-e7nlh.mongodb.net/test?retryWrites=true node src/index.js"
   },
@@ -16,5 +16,10 @@
     "express": "^4.17.1",
     "mongoose": "^5.6.2",
     "nodemailer": "^6.2.1"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "supertest": "*"
   }
 }

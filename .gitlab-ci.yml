@@ -2,6 +2,7 @@ image: node:latest
 
 stages:
   - build
+  - test
 
 install_dependencies:
   stage: build
@@ -13,3 +14,8 @@ install_dependencies:
       - module-integracao/node_modules/
       - module-notify/node_modules/
       - module-gateway/node_modules/
+
+unit_tests:
+  stage: test
+  script:
+    - chmod a+x tests.sh && ./tests.sh
