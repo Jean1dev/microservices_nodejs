@@ -17,3 +17,5 @@ app.use(require(`./routes`))
 server.listen(port, () => {
     console.log(`module-integracao: ${port}`)
 })
+
+module.exports = app
