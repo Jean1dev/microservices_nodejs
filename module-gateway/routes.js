@@ -15,7 +15,7 @@ const integracao = httpProxy(JAGUAR_APIS_ROUTES.integracao)
 //const whatsapp = httpProxy(`${base_url}:3004`)
 const comunicacao = httpProxy(JAGUAR_APIS_ROUTES.comunicacao)
 // drive 3006
-// chat 3007
+const chat = httpProxy(JAGUAR_APIS_ROUTES.chat)
 
 const ssl_url = '/.well-known/acme-challenge/*'
 router.use(express.static(__dirname, { dotfiles: 'allow' }));
@@ -27,6 +27,9 @@ router.get(ssl_url,
 //**************************************************************
 router.get('/status', (req, res, next) => healthAlive(req, res, next))
 //**************************************************************
+
+//*********************************** API CHAT */
+router.post(`/chat/*`, (req, res, next) => chat(req, res, next))
 
 //*********************************** API COMUNICACAO */
 router.post(`/comunicacao/*`, (req, res, next) => comunicacao(req, res, next))

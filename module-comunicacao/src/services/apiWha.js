@@ -1,5 +1,6 @@
 const request = require('request')
 const utils = require('./utils')
+const api = require('./apiService')
 
 class ApiWha {
 
@@ -57,8 +58,9 @@ class ApiWha {
     }
 
     webHooks(req, res) {
-        console.log(req.body.data)
+        if (!req.body.data) return res.json({})
         res.json( {autoreply: "resposta automagica"} )
+        api.enviarMensagemParaApiChat(req.body.data)
     }
 }
 

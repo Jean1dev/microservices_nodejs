@@ -36,6 +36,10 @@ const ChatInfo = new mongoose.Schema({
     custom_data: {
         any: Schema.Types.Mixed
     },
+
+    mensagensRecebidas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'MensagemRecebida'}],
+
+    mensagensEnviadas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'MensagemEnviada'}],
 }, {
     timestamps: true
 })
