@@ -24,8 +24,8 @@ npm i
 touch .env
 echo "// RENOMEAR PARA .env e colocar os valores
 module.exports = {
-    email: 'jeanlucafp@gmail.com',
-    senha: 'jeanlucaObscure345',
+    email: 'rocketsolucoes@gmail.com',
+    senha: 'rocket2019',
 }" > .env
 APP_NAME="notify"
 pm2 start npm --name $APP_NAME -- run production
