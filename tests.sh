@@ -14,3 +14,4 @@ cd ..
 
 cd module-integracao
 npm test
+echo 'fim'
