@@ -30,7 +30,7 @@ deploy:
     - touch arquivo_ssh
     - echo "$PRIVATE_KEY" > arquivo_ssh
     - chmod 400 arquivo_ssh
-    - ssh-add arquivo_ssh
+    - ssh-add -K arquivo_ssh 
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
