@@ -27,7 +27,7 @@ deploy:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y  )'
     - 'which rsync || ( apt-get update -y && apt-get install rsync -y )'
     - touch digital_ocean_ssh
-    - echo $SSH_DG > digital_ocean_ssh
+    - echo $NEW_SSH > digital_ocean_ssh
     - ssh-add digital_ocean_ssh
     - ssh $SERVER_USER@$SERVER_IP
     - chmod a+x build.sh && ./build.sh
