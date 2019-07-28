@@ -19,23 +19,3 @@ unit_tests:
   stage: test
   script:
     - chmod a+x tests.sh && ./tests.sh
-
-deploy:
-  stage: deploy
-  before_script:
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y  )'
-    - 'which rsync || ( apt-get update -y && apt-get install rsync -y )'
-    - eval $(ssh-agent -s)
-    - touch arquivo_ssh
-    - echo "$PRIVATE_KEY" > arquivo_ssh
-    - chmod 400 arquivo_ssh
-    - ssh-add -K arquivo_ssh 
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-  script: 
-    - ssh $SERVER_USER@$SERVER_IP
-    - chmod a+x build.sh && ./build.sh
-  only:
-    - master
