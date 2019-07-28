@@ -1,0 +1,81 @@
+version: "3"
+
+services:
+  mongodb:
+    image: mongo:3.6
+    ports:
+    - "27017:27017"
+    volumes:
+    - ./volumes/mongodb:/data/db
+
+  gateway:
+    build: 
+      context: ./module-gateway
+      dockerfile: Dockerfile
+      args:
+        - TIPO_AMBIENTE=docker
+    ports:
+      - "8080:8080"
+    volumes: 
+      - .:/usr/src/gateway
+    command: npm start
+
+  chat:
+    build: 
+      context: ./module-chat
+      dockerfile: Dockerfile
+      args:
+        - TIPO_AMBIENTE=docker
+    ports: 
+      - "3007:3007"
+    volumes:
+      - .:/usr/src/chat
+    command: npm start
+
+  comunicacao:
+    build: 
+      context: ./module-comunicacao
+      dockerfile: Dockerfile
+      args:
+        - TIPO_AMBIENTE=docker
+    ports: 
+      - "3005:3005"
+    volumes:
+      - .:/usr/src/comunicacao
+    command: npm start
+
+  drive:
+    build: 
+      context: ./module-drive
+      dockerfile: Dockerfile
+      args:
+        - TIPO_AMBIENTE=docker
+    ports: 
+      - "3006:3006"
+    volumes:
+      - .:/usr/src/drive
+    command: npm start
+
+  integracao:
+    build: 
+      context: ./module-integracao
+      dockerfile: Dockerfile
+      args:
+        - TIPO_AMBIENTE=docker
+    ports: 
+      - "3003:3003"
+    volumes: 
+      - .:/usr/src/integracao
+    command: npm start
+
+  notify:
+    build: 
+      context: ./module-notify
+      dockerfile: Dockerfile
+      args:
+        - TIPO_AMBIENTE=docker
+    ports: 
+      - "3002:3002"
+    volumes:
+      - .:/usr/src/notify
+    command: npm start

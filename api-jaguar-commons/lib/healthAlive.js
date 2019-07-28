@@ -1,11 +1,12 @@
 const axios = require('axios')
+const urls = require('api-jaguar-commons/lib/getUrl')
 
 module.exports.healthAlive = (req, res) => res.json({ status: 'UP' })
 
 module.exports.checarServicos = async (req, res) => {
     let statusOff = { status: 'OFF' }
     let jsonRetorno = {}
-    let baseUrl = `http://localhost`
+    let baseUrl = urls.getUrls(process.env.TIPO_AMBIENTE || 'localhost')
 
     try {
         retorno = await axios.get(`${baseUrl}:3000/on`)

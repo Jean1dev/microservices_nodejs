@@ -14,4 +14,8 @@ cd ..
 
 cd module-integracao
 npm test
+
+cd ..
+cd api-jaguar-commons
+npm test
 echo 'fim'

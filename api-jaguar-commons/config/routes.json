@@ -1,9 +1,20 @@
 {
-    "maestro": "http://localhost:3000/",
-    "notify": "http://localhost:3002/notify",
-    "integracao": "http://localhost:3003/integracao",
-    "whatsapp": "http://localhost:3004/whats",
-    "comunicacao": "http://localhost:3005/comunicacao",
-    "drive": "http://localhost:3006/drive",
-    "chat": "http://localhost:3007/chat"    
+    "localhost": {
+        "maestro": "http://localhost:3000/",
+        "notify": "http://localhost:3002/notify",
+        "integracao": "http://localhost:3003/integracao",
+        "whatsapp": "http://localhost:3004/whats",
+        "comunicacao": "http://localhost:3005/comunicacao",
+        "drive": "http://localhost:3006/drive",
+        "chat": "http://localhost:3007/chat"
+    },
+    "docker": {
+        "maestro": "http://localhost:3000/",
+        "notify": "http://notify:3002/notify",
+        "integracao": "http://integracao:3003/integracao",
+        "whatsapp": "http://localhost:3004/whats",
+        "comunicacao": "http://comunicacao:3005/comunicacao",
+        "drive": "http://drive:3006/drive",
+        "chat": "http://chat:3007/chat"
+    }
 }

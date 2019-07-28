@@ -1,5 +1,6 @@
 const axios = require('axios')
-const JAGUAR_APIS_ROUTES = require('api-jaguar-commons/config/routes.json')
+const urls = require('api-jaguar-commons/lib/getUrl')
+const JAGUAR_APIS_ROUTES = urls.getUrls(process.env.TIPO_AMBIENTE || 'localhost')
 
 module.exports.enviarMensagemWhatsapp = (dadosMensagem) => {
     let content = {

@@ -3,7 +3,8 @@ const httpProxy = require('express-http-proxy')
 const router = express.Router()
 const healthAlive = require('api-jaguar-commons/lib/healthAlive').checarServicos
 const base_url = `http://localhost`
-const JAGUAR_APIS_ROUTES = require('api-jaguar-commons/config/routes.json')
+const urls = require('api-jaguar-commons/lib/getUrl')
+const JAGUAR_APIS_ROUTES = urls.getUrls(process.env.TIPO_AMBIENTE || 'localhost')
 
 const root = httpProxy(base_url)
 //const empresa = httpProxy(`${base_url}:3000/rest/empresa`)

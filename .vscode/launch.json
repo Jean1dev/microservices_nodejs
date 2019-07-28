@@ -5,11 +5,12 @@
     "version": "0.2.0",
     "configurations": [
 
+
         {
             "type": "node",
             "request": "launch",
             "name": "test Script",
-            "program": "${workspaceFolder}/api-jaguar-commons/lib/healthAlive.js"
+            "program": "${workspaceFolder}/api-jaguar-commons/lib/getUrl.js"
         },
         {
             "type": "node",

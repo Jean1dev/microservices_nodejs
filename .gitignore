@@ -6,3 +6,4 @@ logs
 uploads/
 .env
 tmp/
+volumes
