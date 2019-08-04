@@ -3,6 +3,7 @@ image: node:latest
 stages:
   - build
   - test
+  - deploy
 
 install_dependencies:
   stage: build
@@ -19,3 +20,17 @@ unit_tests:
   stage: test
   script:
     - chmod a+x tests.sh && ./tests.sh
+
+deploy_docean:
+  stage: deploy
+  before_script:
+    - mkdir -p ~/.ssh
+    - cat my_known_hosts >> ~/.ssh/known_hosts
+    - echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ssh $SSH_CONN
+    - cd api/api/jaguara_envios
+    - chmod a+x build.sh && ./build.sh
+  only:
+    - master
